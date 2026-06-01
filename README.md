@@ -25,39 +25,35 @@ To implement QR decomposition algorithm using the Gram-Schmidt method.
 ### Gram-Schmidt Method
 ```
 
+''' 
+Program to QR decomposition using the Gram-Schmidt method
+Developed by: ASHLEY ANTONY
+RegisterNumber: 212225220013
+'''
+import os
+os.environ["OPENBLAS_NUM_THREADS"]="1"
 import numpy as np
-
-# Input Matrix
-A = np.array([[1, 1, 0],
-              [1, 0, 1],
-              [0, 1, 1]], dtype=float)
-
-n = A.shape[1]
-
-Q = np.zeros_like(A)
-R = np.zeros((n, n))
-
-for i in range(n):
-    v = A[:, i]
-
-    for j in range(i):
-        R[j, i] = np.dot(Q[:, j], A[:, i])
-        v = v - R[j, i] * Q[:, j]
-
-    R[i, i] = np.linalg.norm(v)
-    Q[:, i] = v / R[i, i]
-
-print("Matrix Q:")
-print(Q)
-
-print("\nMatrix R:")
-print(R)
-
+A=np.array(eval(input()),dtype=float)
+m,n=A.shape
+Q=np.zeros((m,n))
+R=np.zeros((n,n))
+for  j in range(n):
+    v=A[:,j]
+    for i in range(j):
+        R[i,j]=np.dot(Q[:,i],A[:,j])
+        v=v-R[i,j]*Q[:,i]
+    R[j,j]=np.linalg.norm(v)
+    Q[:,j]=v/R[j,j]
+print("The Q Matrix is  ")
+print(f" {Q}")
+print("The R Matrix is ")
+print(f" {R}")
 ```
 
 ## Output
 
-<img width="422" height="296" alt="image" src="https://github.com/user-attachments/assets/c7b925af-be6f-4730-9061-df7b6efc0971" />
+<img width="977" height="524" alt="WhatsApp Image 2026-06-01 at 9 42 12 AM" src="https://github.com/user-attachments/assets/79ec90e8-eafe-4ab6-aaa1-e8c5f897d57e" />
+
 
 
 ## Result
